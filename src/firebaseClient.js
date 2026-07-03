@@ -18,24 +18,20 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCaSR9Pk5_25BeIhG8L3t9Ral9s_CaVUtk",
-  authDomain: "financeai-f62eb.firebaseapp.com",
-  projectId: "financeai-f62eb",
-  storageBucket: "financeai-f62eb.firebasestorage.app",
-  messagingSenderId: "629182548645",
-  appId: "1:629182548645:web:b1c53b639519559c975b4c",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
   measurementId: "G-WGR0J8HGQR",
 };
-
+ 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export default app;
 
-// ============================================================
-// SUPABASE COMPATIBILITY SHIM
-// All your existing supabase.from(...) code works without changes
-// ============================================================
 
 const getCurrentUser = () =>
   new Promise((resolve) => {
